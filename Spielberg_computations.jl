@@ -1,3 +1,7 @@
+# This is a companion file of the article "Computations of Gromov--Witten invariants of toric varieties" by Giosuè Muratore.
+# In this file are reproduced all computations in Holger Spielberg's thesis.
+# In order to execute this file, you need the Julia package "ToricAtiyahBott".
+
 e1 = [1,0,0]; e2 = [0,1,0]; e3 = [0,0,1];
 ray_gens = [e1, -e1, e2, e3, -e2-e3-2*e1];
 max_cones = [[1,3,4],[1,3,5],[1,4,5],[2,3,4],[2,3,5],[2,4,5]];
