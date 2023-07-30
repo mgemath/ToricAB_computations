@@ -1,1 +1,0 @@
-# ToricAB_computations
