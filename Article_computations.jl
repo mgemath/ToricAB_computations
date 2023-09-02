@@ -8,6 +8,20 @@ h = cohomology_class(toric_line_bundle(P3, [1]));
 P = ev(1, h^3)*ev(2, h^3)*ev(3, h^3)*ev(4, h^2)*ev(5, h^2);
 IntegrateAB(P3, 2*h^2, 5, P);
 
+X = domain(blow_up(P3, ideal(gens(cox_ring(P3))[1:3])));
+mg = moment_graph(X);
+H = mg[4,5];
+E = mg[1,2];
+d = 1; # this can be any non negative integer
+e = -1; # this can be any non positive integer
+beta = d*H+e*E;
+P = prod(i -> ev(i, a_point(X)), 1:(2*d+e)); # we require 2d+e>0
+IntegrateAB(X, beta, 2*d+e, P);
+
+l = 4*h;
+P = 1//4*(ev(1,l)^3+3*ev(1,l)^2*Psi(1)+2*ev(1,l)*Psi(2))*ev(1,h)^2;
+IntegrateAB(P3, h^2, 1, P);
+
 # Section 4.2
 e1 = [1,0,0]; e2 = [0,1,0]; e3 = [0,0,1];
 ray_gens = [e1, -e1, e2, e3, -e2-e3-2*e1];
@@ -36,9 +50,5 @@ IntegrateAB(X, lambda1, 3, P);
 # Section 4.4
 M = toric_line_bundle(anticanonical_divisor(X));
 P = push_ev(M);
-IntegrateAB(X, lambda1, 0, P);
+IntegrateAB(X, lambda1, 1, Psi(1)*P);
 IntegrateAB(X, lambda2, 0, P);
-
-# Section 4.5
-P = Psi([1])*push_ev(M);
-IntegrateAB(X, lambda1, 1, P);
