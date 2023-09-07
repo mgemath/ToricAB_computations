@@ -48,7 +48,7 @@ P = ev(1, Z[4])*ev(2, Z[5])*ev(3, a_point(X));
 IntegrateAB(X, lambda1, 3, P);
 
 # Section 4.4
-M = toric_line_bundle(anticanonical_divisor(X));
+M = anticanonical_bundle(X);
 P = push_ev(M);
 IntegrateAB(X, lambda1, 1, Psi(1)*P);
 IntegrateAB(X, lambda2, 0, P);
